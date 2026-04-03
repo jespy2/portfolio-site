@@ -41,6 +41,10 @@
   color: var(--fg-dim);
 }
 
+/* Mobile cards — hidden on desktop */
+.mobileCards { display: none; }
+.mobileHeader { display: none; }
+
 /* Scroll-pin layout */
 .sticky {
   position: sticky;
@@ -150,7 +154,47 @@
   .introRow { grid-template-columns: 1fr; }
   .introLeft { border-right: none; border-bottom: 0.5px solid var(--border); padding: 48px 28px; }
   .introRight { padding: 48px 28px; }
-  .grid { grid-template-columns: 1fr; }
-  .textCol { padding: 40px 28px; border-right: none; border-bottom: 0.5px solid var(--border); }
-  .frameCol { height: 50vh; }
+
+  /* Hide scroll-pin on mobile */
+  .pinWrapper { display: none; }
+
+  /* Show stacked cards instead */
+  .mobileCards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileHeader {
+    display: block;
+    position: sticky;
+    top: 61px; /* nav height */
+    padding: 20px 24px 16px;
+    background: var(--bg);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 10;
+  }
+
+  .mobileCard {
+    margin: 16px 16px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+  }
+
+  .mobileCardImg {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .mobileCardBody {
+    padding: 24px 20px 28px;
+    background: var(--bg);
+  }
+
+  .mobileCards {
+    padding-bottom: 24px;
+  }
 }

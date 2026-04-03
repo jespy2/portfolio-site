@@ -1,4 +1,5 @@
 import { useScrollPin } from "@/hooks";
+import { FadeCard } from "@/components";
 import styles from "@/sections/About.module.css";
 
 import bikeImg from "@/assets/bike.jpg";
@@ -42,76 +43,75 @@ function AboutFrames() {
 	const item = interests[activeFrame];
 
 	return (
-		<div
-			ref={wrapperRef}
-			style={{ height: `calc(100vh * ${interests.length})` }}
-		>
-			<div className={styles.sticky}>
-				<div className={styles.grid}>
-					{/* Text col — updates per frame */}
-					<div className={styles.textCol}>
-						<div className={styles.textInner}>
-							<p className={styles.eyebrow}>Beyond the code</p>
-							<h2 className={styles.heading}>
-								A well-rounded engineer
-								<br />
-								<span className={styles.dim}>is a better engineer.</span>
-							</h2>
-
-							<div key={activeFrame} className={styles.activeText}>
-								<p className={styles.activeSub}>{item.sub}</p>
-								<h3 className={styles.activeTitle}>{item.label}</h3>
-								<p className={styles.activeBody}>{item.body}</p>
-							</div>
-
-							<div className={styles.dots}>
-								{interests.map((_, i) => (
-									<div
-										key={i}
-										className={`${styles.dot} ${i === activeFrame ? styles.dotActive : ""}`}
-									/>
-								))}
+		<>
+			{/* Desktop scroll-pin */}
+			<div
+				ref={wrapperRef}
+				className={styles.pinWrapper}
+				style={{ height: `calc(100vh * ${interests.length})` }}
+			>
+				<div className={styles.sticky}>
+					<div className={styles.grid}>
+						<div className={styles.textCol}>
+							<div className={styles.textInner}>
+								<p className={styles.eyebrow}>Beyond the code</p>
+								<h2 className={styles.heading}>
+									A well-rounded engineer
+									<br />
+									<span className={styles.dim}>is a better engineer.</span>
+								</h2>
+								<div key={activeFrame} className={styles.activeText}>
+									<p className={styles.activeSub}>{item.sub}</p>
+									<h3 className={styles.activeTitle}>{item.label}</h3>
+									<p className={styles.activeBody}>{item.body}</p>
+								</div>
+								<div className={styles.dots}>
+									{interests.map((_, i) => (
+										<div key={i} className={`${styles.dot} ${i === activeFrame ? styles.dotActive : ""}`} />
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{/* Frame col — images, fully visible */}
-					<div className={styles.frameCol}>
-						{interests.map((interest, i) => {
-							const diff = i - activeFrame;
-							let transform = "";
-							let opacity = 0;
-							let zIndex = interests.length - i;
-
-							if (diff < 0) {
-								transform = "translateY(-105%)";
-								opacity = 0;
-							} else if (diff === 0) {
-								transform = "scale(1) translateY(0)";
-								opacity = 1;
-								zIndex = interests.length + 1;
-							} else {
-								transform = "scale(1) translateY(0)";
-								opacity = 0;
-							}
-
-							return (
-								<div
-									key={interest.title}
-									className={styles.frame}
-									style={{
-										transform,
-										opacity,
-										zIndex,
-										backgroundImage: `url(${interest.img})`,
-									}}
-								/>
-							);
-						})}
+						<div className={styles.frameCol}>
+							{interests.map((interest, i) => {
+								const diff = i - activeFrame;
+								let transform = "";
+								let opacity = 0;
+								let zIndex = interests.length - i;
+								if (diff < 0) { transform = "translateY(-105%)"; opacity = 0; }
+								else if (diff === 0) { transform = "scale(1) translateY(0)"; opacity = 1; zIndex = interests.length + 1; }
+								else { transform = "scale(1) translateY(0)"; opacity = 0; }
+								return (
+									<div key={interest.title} className={styles.frame} style={{ transform, opacity, zIndex, backgroundImage: `url(${interest.img})` }} />
+								);
+							})}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+
+			{/* Mobile cards */}
+			<div className={styles.mobileCards}>
+				<div className={styles.mobileHeader}>
+					<p className={styles.eyebrow}>Beyond the code</p>
+					<h2 className={styles.heading}>
+						A well-rounded engineer<br />
+						<span className={styles.dim}>is a better engineer.</span>
+					</h2>
+				</div>
+				{interests.map(interest => (
+					<FadeCard key={interest.title} className={styles.mobileCard}>
+						<img src={interest.img} alt={interest.label} className={styles.mobileCardImg} />
+						<div className={styles.mobileCardBody}>
+							<p className={styles.activeSub}>{interest.sub}</p>
+							<h3 className={styles.activeTitle}>{interest.label}</h3>
+							<p className={styles.activeBody}>{interest.body}</p>
+						</div>
+					</FadeCard>
+				))}
+			</div>
+		</>
 	);
 }
 

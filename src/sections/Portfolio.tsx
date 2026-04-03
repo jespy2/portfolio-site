@@ -1,4 +1,4 @@
-import { ScrollPin } from '@/components'
+import { FadeCard } from '@/components'
 import styles from '@/sections/Portfolio.module.css'
 
 import storialImg from '@/assets/storial.png'
@@ -114,7 +114,7 @@ function PortfolioInner() {
         className={styles.wrapper}
       >
         <div className={styles.sticky}>
-          <div className={styles.grid}>
+            <div className={styles.grid}>
             {/* Text col — driven by activeFrame */}
             <div className={styles.textCol}>
               {textContent(activeFrame)}
@@ -151,6 +151,33 @@ function PortfolioInner() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Mobile cards */}
+      <div className={styles.mobileCards}>
+        <div className={styles.mobileHeader}>
+          <p className={styles.eyebrow}>Portfolio</p>
+          <h2 className={styles.heading}>Selected work.</h2>
+          <p className={styles.sub}>
+            A mix of full-stack builds, open-source contributions, and architectural
+            explorations — each one an opportunity to practice craft at scale.
+          </p>
+        </div>
+        {projects.map(p => (
+          <FadeCard key={p.title} className={styles.mobileCard}>
+            <img src={p.img} alt={p.title} className={styles.mobileCardImg} />
+            <div className={styles.mobileCardBody}>
+              <p className={styles.projectCompany}>{p.company}</p>
+              <h3 className={styles.projectTitle}>{p.title}</h3>
+              <p className={styles.projectDesc}>{p.desc}</p>
+              <div className={styles.stack}>
+                {p.stack.map(t => <span key={t} className={styles.tag}>{t}</span>)}
+              </div>
+              <a href={p.link} target="_blank" rel="noopener noreferrer" className={styles.codeLink}>
+                Review the code →
+              </a>
+            </div>
+          </FadeCard>
+        ))}
       </div>
     </section>
   )
