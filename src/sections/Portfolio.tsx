@@ -12,7 +12,7 @@ const projects = [
     img: storialImg,
     desc: 'Built for an engineering assessment, then rebuilt with enterprise-grade patterns. Redux Toolkit for scalable state, Next.js App Router for server-first architecture, Storybook + CVA variant system for a typed component library, and a full WCAG accessibility audit.',
     stack: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'MongoDB', 'Storybook', 'Tailwind'],
-    link: '#',
+    link: 'https://github.com/jespy2/storial-3.0',
     designNotes: [
       'Redux over local state — demonstrates scalable architecture',
       'CVA variant system — type-safe, composable component APIs',
@@ -26,7 +26,7 @@ const projects = [
     img: gomenuImg,
     desc: 'A digital cookbook that scrapes LD+JSON recipe data from any URL, building a searchable, filterable cookbook with user notes, ratings, and mobile-first UX. Currently mid-refactor incorporating new mobile-centric ideas into the MVP.',
     stack: ['React', 'TypeScript', 'Node/Express', 'MongoDB Atlas', 'Material UI', 'SASS'],
-    link: '#',
+    link: 'https://github.com/jespy2/gomenu',
     designNotes: [
       'LD+JSON scraping — captures structured recipe data from any site',
       'Atlas Search — server-side filtering middleware',
@@ -39,7 +39,7 @@ const projects = [
     img: redisImg,
     desc: 'An open-source tool for monitoring Redis keyspace events and deployments in real time — granular key-level visibility across any number of Redis instances. My contribution focused on backend algorithms, data structures, and routing middleware.',
     stack: ['Node.js', 'Express', 'Redis', 'WebSockets', 'React'],
-    link: '#',
+    link: 'https://github.com/oslabs-beta/redis-hawk',
     designNotes: [
       'Real-time keyspace monitoring across multiple Redis instances',
       'Custom algorithms and data structures for event visualization',
@@ -77,7 +77,7 @@ const textContent = (activeFrame: number) => (
         ))}
       </div>
 
-      <a href={projects[activeFrame].link} className={styles.codeLink}>
+      <a href={projects[activeFrame].link} className={styles.codeLink} target="_blank" rel="noopener noreferrer">
         Review the code →
       </a>
     </div>
