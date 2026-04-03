@@ -19,7 +19,7 @@ const interests = [
 		img: bikeImg,
 		label: "Motorcycles",
 		sub: "Short day trips to 6,400 mi epic journeys",
-		body: "Long-distance touring is my passion. Epic trips require planning, coordination, and adaptability — plans change with weather and road conditions. These experiences directly inform how I work: I thrive on hard challenges, adapt to changing requirements, and delight when a completed project exceeds expectations.",
+		body: "Long-distance touring and backcountry exploration is my passion. Epic trips require planning, coordination, and adaptability — plans change with weather and road conditions. These experiences directly inform how I work: I thrive on hard challenges, adapt to changing requirements, and delight when a completed project exceeds expectations.",
 	},
 	{
 		title: "Camping",
