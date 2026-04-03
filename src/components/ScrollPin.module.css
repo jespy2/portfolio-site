@@ -1,0 +1,64 @@
+.wrapper {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.reversed {
+  direction: rtl;
+}
+
+.reversed > * {
+  direction: ltr;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 56px;
+  border-right: 0.5px solid var(--border);
+  z-index: 10;
+  background: var(--bg);
+}
+
+.reversed .textCol {
+  border-right: none;
+  border-left: 0.5px solid var(--border);
+}
+
+.frameCol {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition:
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle dark overlay on all frames so text is readable */
+.frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}

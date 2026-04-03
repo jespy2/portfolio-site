@@ -1,0 +1,5 @@
+export { default as Hero } from '@/sections/Hero'
+export { default as About } from '@/sections/About'
+export { default as Portfolio } from '@/sections/Portfolio'
+export { default as Stack } from '@/sections/Stack'
+export { default as Contact } from '@/sections/Contact'

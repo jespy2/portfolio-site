@@ -1,0 +1,142 @@
+.hero {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	padding-top: 72px; /* nav height */
+	overflow: hidden;
+	border-bottom: 0.5px solid var(--border);
+}
+
+.bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center 30%;
+	background-repeat: no-repeat;
+	filter: grayscale(15%);
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		105deg,
+		rgba(13, 13, 13, 0.92) 0%,
+		rgba(13, 13, 13, 0.75) 50%,
+		rgba(13, 13, 13, 0.3) 100%
+	);
+}
+
+.content {
+	position: relative;
+	z-index: 2;
+	padding: 80px 56px;
+	max-width: 660px;
+}
+
+.eyebrow {
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	color: var(--fg-dim);
+	text-transform: uppercase;
+	margin-bottom: 24px;
+}
+
+.headline {
+	font-size: clamp(36px, 4vw, 52px);
+	font-weight: 300;
+	line-height: 1.08;
+	margin-bottom: 28px;
+	letter-spacing: -0.02em;
+}
+
+.dim {
+	color: var(--fg-dim);
+}
+
+.sub {
+	font-size: 15px;
+	color: var(--fg-muted);
+	line-height: 1.8;
+	max-width: 480px;
+	margin-bottom: 16px;
+}
+
+.body {
+	font-size: 14px;
+	color: var(--fg-dim);
+	line-height: 1.75;
+	max-width: 480px;
+	margin-bottom: 40px;
+}
+
+.ctas {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+}
+
+.btnPrimary {
+	font-size: 13px;
+	font-family: var(--font);
+	font-weight: 400;
+	padding: 13px 28px;
+	background: var(--fg);
+	color: var(--bg);
+	border: none;
+	border-radius: 28px;
+	cursor: pointer;
+	letter-spacing: 0.02em;
+	transition: opacity 0.2s;
+}
+
+.btnPrimary:hover {
+	opacity: 0.88;
+}
+
+.btnOutline {
+	font-size: 13px;
+	font-family: var(--font);
+	font-weight: 400;
+	padding: 13px 28px;
+	background: transparent;
+	color: var(--fg-muted);
+	border: 0.5px solid rgba(240, 237, 232, 0.25);
+	border-radius: 28px;
+	cursor: pointer;
+	letter-spacing: 0.02em;
+	transition: all 0.2s;
+}
+
+.btnOutline:hover {
+	border-color: var(--border-hover);
+	color: var(--fg);
+}
+
+.photoCol {
+	position: absolute;
+	right: 80px;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+}
+
+.photo {
+	width: 220px;
+	height: 300px;
+	object-fit: cover;
+	object-position: center top;
+	border-radius: 12px;
+	filter: grayscale(100%);
+	border: 0.5px solid var(--border);
+}
+
+@media (max-width: 768px) {
+	.photoCol {
+		display: none;
+	}
+	.content {
+		padding: 60px 28px;
+	}
+}
