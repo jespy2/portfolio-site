@@ -93,7 +93,7 @@ export default function Stack() {
 						review.
 					</p>
 					<a
-						href='/resume.pdf'
+						href='/jamesespy-resume.pdf'
 						className={styles.resumeBtn}
 						target='_blank'
 						rel='noopener noreferrer'
