@@ -3,7 +3,7 @@
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
-	padding-top: 72px; /* nav height */
+	padding-top: calc(72px + var(--banner-h)); /* nav + banner */
 	overflow: hidden;
 	border-bottom: 0.5px solid var(--border);
 }

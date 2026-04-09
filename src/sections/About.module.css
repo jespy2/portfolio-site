@@ -167,7 +167,7 @@
   .mobileHeader {
     display: block;
     position: sticky;
-    top: 61px; /* nav height */
+    top: calc(var(--banner-h) + 61px); /* banner + nav height */
     padding: 20px 24px 16px;
     background: var(--bg);
     border-bottom: 0.5px solid var(--border);

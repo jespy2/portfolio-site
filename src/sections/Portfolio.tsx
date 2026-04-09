@@ -1,11 +1,27 @@
 import { FadeCard } from '@/components'
 import styles from '@/sections/Portfolio.module.css'
 
+import motoscoreImg from '@/assets/motoscore.png'
 import storialImg from '@/assets/storial.png'
 import gomenuImg from '@/assets/gomenu.png'
 import redisImg from '@/assets/redis-hawk.png'
 
 const projects = [
+  {
+    company: 'Personal · Beta',
+    title: 'MotoScore',
+    img: motoscoreImg,
+    desc: 'A motorcycle route analyzer that scores any road for riding enjoyment using a composite 0–100 fun score derived from six signals: curvature density, turn severity, elevation change rate, surface quality, flow consistency, and traffic — each weighted by rider profile (Sport, Touring, Adventure).',
+    stack: ['Next.js 15', 'TypeScript', 'Mapbox GL JS', 'Zustand', 'Cloudflare Workers', 'Playwright', 'Vitest'],
+    link: 'https://github.com/jespy2/motoscore',
+    liveLink: 'https://motoscore.jamesespy.com/',
+    designNotes: [
+      'Six-signal scoring algorithm — curvature, elevation, surface, and flow weighted by rider profile',
+      'Cloudflare Workers edge proxying — TomTom traffic and Mapbox API calls at the edge',
+      'Garmin GPX export with 50m shaping points — prevents route divergence on device recalculation',
+      'Tiered caching — 1min real-time traffic, 24hr historical patterns, indefinite elevation data',
+    ],
+  },
   {
     company: 'Personal · Full-stack',
     title: 'Storial',
@@ -77,9 +93,16 @@ const textContent = (activeFrame: number) => (
         ))}
       </div>
 
-      <a href={projects[activeFrame].link} className={styles.codeLink} target="_blank" rel="noopener noreferrer">
-        Review the code →
-      </a>
+      <div className={styles.projectLinks}>
+        {projects[activeFrame].liveLink && (
+          <a href={projects[activeFrame].liveLink} className={styles.codeLink} target="_blank" rel="noopener noreferrer">
+            Live demo →
+          </a>
+        )}
+        <a href={projects[activeFrame].link} className={styles.codeLink} target="_blank" rel="noopener noreferrer">
+          Review the code →
+        </a>
+      </div>
     </div>
 
     {/* Project nav dots */}
@@ -172,9 +195,16 @@ function PortfolioInner() {
               <div className={styles.stack}>
                 {p.stack.map(t => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" className={styles.codeLink}>
-                Review the code →
-              </a>
+              <div className={styles.projectLinks}>
+                {p.liveLink && (
+                  <a href={p.liveLink} target="_blank" rel="noopener noreferrer" className={styles.codeLink}>
+                    Live demo →
+                  </a>
+                )}
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className={styles.codeLink}>
+                  Review the code →
+                </a>
+              </div>
             </div>
           </FadeCard>
         ))}
